@@ -23,6 +23,16 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * The main LonelyTwitter activity
+ *
+ * @author lwmcdona
+ * @version 1.0
+ * @see iTweetable
+ * @see Tweet
+ * @see NormalTweet
+ * @see ImportantTweet
+ */
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file1.sav";
@@ -30,8 +40,10 @@ public class LonelyTwitterActivity extends Activity {
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweets;
 	private ArrayAdapter<Tweet> adapter; // notify UI that tweets change
-	
-	/** Called when the activity is first created. */
+
+	/**
+	 * 	Called when the activity is first created.
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,6 +75,9 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
+	/**
+	 * Called when the activity starts
+	 */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -73,6 +88,9 @@ public class LonelyTwitterActivity extends Activity {
 		adapter.notifyDataSetChanged();
 	}
 
+	/**
+	 * Loads saved tweets from file
+	 */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -88,7 +106,10 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
+	/**
+	 * Saves tweets data to file
+	 */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
